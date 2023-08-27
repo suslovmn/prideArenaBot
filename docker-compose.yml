@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  pride_arena_bot:
+    build: .
+    container_name: pride_arena_bot_1
+    command: sh -c "python main.py"
+    ports:
+      - 81:80
+    restart: always
