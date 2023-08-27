@@ -28,16 +28,6 @@ storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
 
-# Контакты менеджера для брони
-# информация по ценам
-# где находимся
-# оставьте телефон мы вам перезвоним
-
-# потом будет
-# оплатите
-# eзнать актуальное расписание
-
-
 class UserForm(StatesGroup):
     mainMenu = State()
     yourPhoneState = State()
@@ -54,7 +44,8 @@ async def process_name(message: types.Message):
 
     if message.text == "Стоимость аренды":
         print(message.text)
-        await message.reply("Информационное сообщение с ценами")
+        with open('resourсes/prices.jpeg', 'rb') as photo:
+            await message.reply_photo(photo)
     if message.text == callMeButtonText:
         await message.reply("Оставьте номер телефона мы вам перезвоним:",
                                 reply_markup=ReplyKeyboardRemove())
