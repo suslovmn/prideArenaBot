@@ -2,5 +2,5 @@ greetingMessage = "Здравствуйте, это бот Прайд-арены
 
 pricesButtonText = 'Стоимость аренды'
 phoneButtonText = 'Наш телефон'
-callMeButtonText = 'Отложенный звонок'
+callMeButtonText = 'Оставить заявку'
 ourAdressButtonText = 'Наш адрес'

@@ -62,7 +62,10 @@ async def process_name(message: types.Message):
     if message.text == phoneButtonText:
         await message.reply("Наш телефон: +79217832332, звоните с 10-00 до 22-00")
     if message.text == ourAdressButtonText:
-        await message.reply("ул. Благодатная улица, 67В ближайшие метро Электросила и Бухарестская")
+        address_link = '<a href="https://yandex.ru/navi/?whatshere%5Bzoom%5D=18&whatshere%5Bpoint%5D=30.344741%2C59.876228">адрес</a>'
+        reply_text = f"Наш {address_link} - ул. Благодатная улица, 67В, ближайшие метро Электросила и Бухарестская"
+        await message.reply(reply_text, parse_mode='HTML')
+
 
 @dp.message_handler(state=UserForm.yourPhoneState)
 async def process_yourPhoneState(message: types.Message, state: FSMContext):
