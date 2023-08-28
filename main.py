@@ -1,7 +1,6 @@
 import os
 import datetime
 
-import phonenumbers
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
@@ -62,11 +61,9 @@ async def process_name(message: types.Message):
 async def process_yourPhoneState(message: types.Message, state: FSMContext):
 
     if not is_valid_phone_number(message.text):
-        await message.reply(text='Вы ввели неверный номер телефона, попробуйте еще раз или позвоните администратору',
-                               reply_markup=mainKb)
-        await UserForm.mainMenu.set()
+        await message.reply(text='Вы ввели неверный номер телефона, попробуйте еще раз или позвоните администратору')
+        await UserForm.yourPhoneState.set()
         return
-
 
     async with state.proxy() as data:
         data['phone'] = message.text
@@ -117,16 +114,10 @@ async def process_yourPhoneState(message: types.Message, state: FSMContext):
             print('An error occurred: {0}'.format(error))
 
 def is_valid_phone_number(phone_number):
-    try:
-        parsed_number = phonenumbers.parse(phone_number, None)
-        if not phonenumbers.is_possible_number(parsed_number):
-            return False
-        if not phonenumbers.is_valid_number(parsed_number):
-            return False
+    valid_chars = set("0123456789() -+")
+    if set(phone_number) <= valid_chars and 7 <= len(phone_number) <= 12:
         return True
-    except phonenumbers.NumberParseException:
-        return False
-
+    return False
 
 
 if __name__ == '__main__':
