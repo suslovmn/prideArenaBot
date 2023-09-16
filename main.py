@@ -28,15 +28,17 @@ dp = Dispatcher(bot, storage=storage)
 
 
 class UserForm(StatesGroup):
+    mainMenu = State()
     yourPhoneState = State()
 
 
 @dp.message_handler(commands=['start'], state='*')
 async def welcome(message: types.Message):
     await message.reply(greetingMessage, reply_markup=mainKb)
+    await UserForm.mainMenu.set()
 
 
-@dp.message_handler(state='*')
+@dp.message_handler(state=UserForm.mainMenu)
 async def process_name(message: types.Message):
 
     if message.text == "Стоимость аренды":
