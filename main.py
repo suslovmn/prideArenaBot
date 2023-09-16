@@ -90,12 +90,11 @@ async def process_yourPhoneState(message: types.Message, state: FSMContext):
         sheets_service = build('sheets', 'v4', credentials=credentials)
         current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        values = []
-        values.append([
+        values = [[
             data['phone'],
             message.from_user.username,
             current_time
-        ])
+        ]]
 
         body = {
             'values': values
