@@ -35,10 +35,9 @@ class UserForm(StatesGroup):
 @dp.message_handler(commands=['start'], state='*')
 async def welcome(message: types.Message):
     await message.reply(greetingMessage, reply_markup=mainKb)
-    await UserForm.mainMenu.set()
 
 
-@dp.message_handler(state=UserForm.mainMenu)
+@dp.message_handler()
 async def process_name(message: types.Message):
 
     if message.text == "Стоимость аренды":
