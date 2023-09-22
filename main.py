@@ -37,7 +37,7 @@ async def welcome(message: types.Message):
     await message.reply(greetingMessage, reply_markup=mainKb)
 
 
-@dp.message_handler()
+@dp.message_handler(state='*')
 async def process_name(message: types.Message):
 
     if message.text == "Стоимость аренды":
