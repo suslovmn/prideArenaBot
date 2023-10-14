@@ -1,7 +1,9 @@
-aiogram==2.25.1
+aiofiles==23.1.0
+aiogram==3.1.0
 google==3.0.0
 google-api-core==2.11.1
 google-api-python-client==2.97.0
 google-auth==2.22.0
 google-auth-httplib2==0.1.0
+magic-filter==1.0.11
 python-dotenv==1.0.0
