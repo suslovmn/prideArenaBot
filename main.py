@@ -37,13 +37,13 @@ async def process_name(message: types.Message, bot: Bot, state: FSMContext):
     if message.text == "Стоимость аренды":
         await message.reply_photo(FSInputFile('resourсes/prices.jpeg'))
 
-    if message.text == callMeButtonText:
+    elif message.text == callMeButtonText:
         await message.reply("Оставьте номер телефона мы вам перезвоним:",
                             reply_markup=ReplyKeyboardRemove())
         await state.set_state(UserForm.yourPhoneState)
-    if message.text == phoneButtonText:
+    elif message.text == phoneButtonText:
         await message.reply("Наш телефон: +79119050078, звоните с 10-00 до 22-00")
-    if message.text == ourAdressButtonText:
+    elif message.text == ourAdressButtonText:
         address_link = '<a href="https://yandex.ru/navi/?whatshere%5Bzoom%5D=18&whatshere%5Bpoint%5D=30.344741%2C59.876228">адрес</a>'
         reply_text = f"Наш {address_link} - ул. Благодатная 67В\n" \
                      f"15 минут пешком от м. Электросила,\n" \
