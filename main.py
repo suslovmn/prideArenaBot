@@ -53,7 +53,13 @@ async def process_name(message: types.Message):
         await message.reply("Наш телефон: +79217832332, звоните с 10-00 до 22-00")
     if message.text == ourAdressButtonText:
         address_link = '<a href="https://yandex.ru/navi/?whatshere%5Bzoom%5D=18&whatshere%5Bpoint%5D=30.344741%2C59.876228">адрес</a>'
-        reply_text = f"Наш {address_link} - ул. Благодатная улица, 67В, ближайшие метро Электросила и Бухарестская"
+        reply_text = f"Наш {address_link} - ул. Благодатная 67В\n" \
+                     f"15 минут пешком от м. Электросила,\n" \
+                     f"15 минут пешком от м. Бухарестская\n" \
+                     f"3 минуты пешком до остановки общественного транспорта:\n\n" \
+                     f"Трамваи: 43, 45\n" \
+                     f"Автобусы: 12, 36, 95, 159\n" \
+                     f"Троллейбусы: 36, 39"
         await message.reply(reply_text, parse_mode='HTML')
 
 
